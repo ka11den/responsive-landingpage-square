@@ -1,3 +1,14 @@
+// loader
+const loader = document.querySelector(".loader");
+window.onload = () => {
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 500);
+  }, 500);
+}
+
 // header
 const navMenu = document.getElementById('nav-menu');
 const navToggle = document.getElementById('nav-toggle');
@@ -15,56 +26,68 @@ if (navClose) {
   })
 }
 
-// active links
-const navLinks = document.querySelectorAll('.nav__link');
+// scroll
+const sections = document.querySelectorAll('section[id]')
 
-navLinks.forEach(n => n.addEventListener('click', () => {
-  navLinks.forEach(n => n.classList.remove('nav__link-active'))
-  n.classList.add('nav__link-active');
-}))
+function scrollActive() {
+  const scrollY = window.scrollY
+
+  sections.forEach(current => {
+    const sectionHeight = current.offsetHeight
+    const sectionTop = current.offsetTop - 40;
+    sectionId = current.getAttribute('id')
+
+    if (scrollY >= sectionTop && scrollY <= sectionTop + sectionHeight) {
+      document.querySelector('.nav__menu a[href*=' + sectionId + ']')?.classList.add('nav__link-active')
+    } else {
+      document.querySelector('.nav__menu a[href*=' + sectionId + ']')?.classList.remove('nav__link-active')
+    }
+  })
+}
+window.addEventListener('scroll', scrollActive)
 
 // works
 const data = [
   {
     id: "1",
     number: "01",
-    img: "./assets/img/home.png",
+    img: "./assets/img/home.webp",
     desc: "Вы обращаетесь к нам, присылаете позицию, которая вам интересна, а Мы помогаем подобрать Вам размер и заканчиваем оформления заказа сразу после оплаты."
   },
   {
     id: "2",
     number: "02",
-    img: "./assets/img/work1.png",
+    img: "./assets/img/work1.webp",
     desc: "Вы обр."
   },
   {
     id: "3",
     number: "03",
-    img: "./assets/img/work2.png",
+    img: "./assets/img/work2.webp",
     desc: "Вы обр."
   },
   {
     id: "4",
     number: "04",
-    img: "./assets/img/home.png",
+    img: "./assets/img/home.webp",
     desc: "Вы обр."
   },
   {
     id: "5",
     number: "05",
-    img: "./assets/img/work1.png",
+    img: "./assets/img/work1.webp",
     desc: "Вы обр."
   },
   {
     id: "6",
     number: "06",
-    img: "./assets/img/work2.png",
+    img: "./assets/img/work2.webp",
     desc: "Вы обр."
   },
   {
     id: "7",
     number: "07",
-    img: "./assets/img/home.png",
+    img: "./assets/img/home.webp",
     desc: "Вы обр."
   }
 ]

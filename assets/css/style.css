@@ -13,7 +13,6 @@
   src: url("../fonts/Benzin-Medium.ttf");
 }
 
-
 /*=============== VARIABLES CSS ===============*/
 :root {
   --header-height: 3.5rem;
@@ -132,7 +131,7 @@ button, body {
 
 body {
   background-color: var(--body-color);
-  background-image: url("../img/bg.png");
+  background-image: url("../img/bg.webp");
   background-repeat: no-repeat;
   background-size: auto;
   background-position: top;
@@ -147,7 +146,7 @@ body {
 /* base */
 
 .container {
-  max-width: 1700px;
+  max-width: 1500px;
   margin-inline: 1.5rem;
 }
 
@@ -336,6 +335,47 @@ body {
 
 .snow-menu {
   top: 0;
+}
+
+/* loader */
+.loader{
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--body-color);
+  transition: all 0.5s;
+}
+
+.loader .ring{
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader .ring:after{
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 5px solid var(--first-color);
+  border-top-color: transparent;
+  animation: rotate 1.5s linear infinite;
+}
+
+@keyframes rotate {
+  100%{
+    transform: rotate(360deg);
+  }
 }
 
 /* home */
@@ -683,15 +723,15 @@ body {
 }
 
 .category__card-1 {
-  background-image: url(../img/category__one.png);
+  background-image: url(../img/category__one.webp);
 }
 
 .category__card-2 {
-  background-image: url(../img/category__two.png);
+  background-image: url(../img/category__two.webp);
 }
 
 .category__card-3 {
-  background-image: url(../img/category__three.png);
+  background-image: url(../img/category__three.webp);
 }
 
 .category__card-3:hover,
