@@ -152,7 +152,7 @@ body {
 
 /* header */
 .header {
-  position: absolute;
+  position: fixed;
   top: 30px;
   left: 0;
   right: 0;
@@ -161,6 +161,7 @@ body {
   z-index: 1;
 
   border-radius: 70.5px;
+  backdrop-filter: blur(78px);
   background-color: var(--title-color);
 
   transition: all .3s;
