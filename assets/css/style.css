@@ -1083,6 +1083,7 @@ body {
 .calculator__card {
   display: flex;
   flex-direction: column;
+  height: 700px;
   gap: 1.5rem;
 
   padding: 3rem;
@@ -1200,7 +1201,6 @@ body {
   transition: all .3s;
 }
 
-
 .calculator__card-span {
   color: #0A0A0A;
   font-family: "Benzin-Medium";
@@ -1209,6 +1209,48 @@ body {
   font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
+}
+
+.calculator__card-box__span {
+  display: none;
+
+  color: #FFCF55;
+  font-family: Benzin-Bold;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.calculator-btns {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  padding: 1rem;
+  align-items: center;
+
+  border-radius: 68px;
+  background: #0A0A0A;   
+
+  transition: all .3s;
+}
+
+.calculator__card-box__value {
+  display: none;
+
+  color: var(--text-color);
+  font-family: Benzin-Bold;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  transition: all .3s;
+}
+
+.calculator__card-price {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 /* media */

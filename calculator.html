@@ -115,7 +115,7 @@
       <article class="calculator__card">
         <div class="calculator__card-box">
           <input id="priceInput" class="calculator__card-input" value="0"/>
-          <p id="priveValute" class="calculator__card-box__valute">Cтоимость в рублях</p>
+          <p id="priveValute" class="calculator__card-box__valute">Cтоимость в юанях</p>
         </div>
         <ul class="calculator__card-list" id="categoryList">
           <li class="calculator__card-item">
@@ -152,9 +152,16 @@
             <span class="calculator__card-span" data-price="связь с менеджером">Техника, мебель, другое</span>
           </li>
         </ul>
-        <button id="calculator-btn" class="calculator__btn">
-          Рассчитать
-        </button>
+
+        <div id="calculator-btns">
+          <button id="calculator-btn" class="calculator__btn">
+            Рассчитать
+          </button>
+          <div class="calculator__card-price">
+            <p id="rublesValue" class="calculator__card-box__value">0</p>
+            <span id="rublesChar" class="calculator__card-box__span">₽</span>
+          </div>
+        </div>
       </article>
     </div>
   </section>
