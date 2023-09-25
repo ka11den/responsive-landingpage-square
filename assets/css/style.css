@@ -161,7 +161,8 @@ body {
   z-index: 10;
 
   border-radius: 70.5px;
-  background-color: var(--title-color);
+  background: rgba(10, 10, 10, 0.87);
+  backdrop-filter: blur(24px);
 
   transition: all .3s;
 }
@@ -238,10 +239,10 @@ body {
 @media screen and (max-width: 1400px) {
   .nav__menu, .nav__buttns {
     position: fixed;
-    left: 0;
-    top: -100%;
-    
-    width: 100%;
+    left: -25px;
+    top: -500%;
+    width: 100vw;
+
     padding-block: 4rem;
 
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0);
@@ -345,7 +346,7 @@ body {
 }
 
 .snow-menu {
-  top: 0;
+  top: -30px;
 }
 
 
@@ -410,7 +411,7 @@ body {
 .home__title-effect__lenta-2 {
   font-family: "Benzin-Bold";
   position: relative;
-  color: #FFCF55;
+  color: var(--first-color);
   font-weight: 400;
 }
 
@@ -620,11 +621,11 @@ body {
 }
 
 .about__card-icon path {
-  fill: #FFCF55;
+  fill: var(--first-color);
 }
 
 .about__card-container:nth-child(4) {
-  background-color: #FFCF55;
+  background-color: var(--first-color);
   color: var(--button-color-alt);;
 } 
 
@@ -634,7 +635,7 @@ body {
 } 
 
 .about__card-container:nth-child(4) h1{
-  background-color: #FFCF55;
+  background-color: var(--first-color);
   color: var(--button-color-alt);;
 }
 
@@ -649,7 +650,7 @@ body {
 }
 
 .about__title-sub {
-  color: #FFCF55;
+  color: var(--first-color);
   font-size: var(--h2-font-size);
   font-style: normal;
   font-weight: 400;
@@ -668,9 +669,9 @@ body {
 }
 
 .preview__title {
-  color: #FFCF55;
+  color: var(--first-color);
   text-align: center;
-  font-size: var(--h2-font-size);
+  font-size: calc(var(--h2-font-size) + 20px);
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -678,7 +679,7 @@ body {
 }
 
 .preview__desc {
-  color: #FFCF55;
+  color: var(--first-color);
   text-align: center;
   font-family: "Benzin-Regular";
   font-size: var(--small-font-size);
@@ -793,9 +794,10 @@ body {
 }
 
 .works__title {
-  color: #FFF;
+  color: var(--text-color);
   text-align: center;
   font-size: var(--h1-font-size);
+  font-family: "Benzin-Regular";
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -811,22 +813,27 @@ body {
   justify-content: center;
   align-items: center;
   height: 68px;
+
   border-radius: 100%;
   background-color: #1d190d;
-  color: #FFCF55;
+
+  font-family: "Benzin-Regular";
+  color: var(--first-color);
 
   transition: all .3s;
 }
 
 .works__number-btn:hover {
-  color: var(--button-color-alt);;
-  background-color: #FFCF55;;
+  color: var(--button-color-alt);
+  background-color: var(--first-color);
+
   transition: all .3s;
 }
 
 .works__number-btn:focus {
-  color: var(--button-color-alt);;
-  background-color: #FFCF55;;
+  color: var(--button-color-alt);
+  background-color: var(--first-color);
+
   transition: all .3s;
 }
 
@@ -899,9 +906,10 @@ body {
 }
 
 .faq__title {
-  color: #FFCF55;
+  color: var(--first-color);
   text-align: center;
   font-size: var(--big-font-size);
+  font-family:"Benzin-Regular";
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -962,7 +970,7 @@ body {
 
 .faq__card.active .faq__card-dropdown {
   display: block;
-  padding: 5rem 1rem;
+  padding: 5rem 2rem;
   max-height: 1000px;
 }
 
@@ -1020,7 +1028,7 @@ body {
 }
 
 .footer__title {
-  color: #FFCF55;
+  color: var(--first-color);
   font-size: var(--small-font-size);
   font-style: normal;
   font-weight: 400;
@@ -1207,7 +1215,7 @@ body {
 .calculator__card-box__span {
   display: none;
 
-  color: #FFCF55;
+  color: var(--first-color);
   font-family: Benzin-Bold;
   font-size: 32px;
   font-style: normal;
@@ -1374,7 +1382,7 @@ body {
   }
   /* faq */
   .faq__card-header {  
-    padding: 1rem;
+    padding: 1rem 2rem;
   
     border-radius: 96px;
   }
@@ -1389,7 +1397,7 @@ body {
     height: 140px;
     flex-shrink: 0;
     border-radius: 512px;
-    background: #FFCF55;
+    background: var(--first-color);
     filter: blur(256px);
   
     z-index: -1;

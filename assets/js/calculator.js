@@ -12,7 +12,8 @@ btn.addEventListener("click", () => {
   const calculatorBtns = document.getElementById("calculator-btns");
   calculatorBtns.classList.remove(".calculator-btns")
 
-  if (isReset) {
+  if (isReset) {   
+
     btn.textContent = "Рассчитать";    
     input.value = "0";
     
@@ -45,8 +46,10 @@ btn.addEventListener("click", () => {
       const price = input.value * exchangeRate;
       const totalPrice = price;
       const priceWithTwoPercentIncrease = parseFloat(priceText) + totalPrice * 1.02;
+
+      if (priceInput.value == 0) return input.value = "Вы не заполнили данные";
       
-      rublesValue.textContent = priceWithTwoPercentIncrease.toFixed();
+      rublesValue.textContent = priceWithTwoPercentIncrease.toFixed() | 0;
 
       // css
       calculatorBtns.classList.add("calculator-btns");
