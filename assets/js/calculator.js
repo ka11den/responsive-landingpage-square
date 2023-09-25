@@ -39,13 +39,12 @@ btn.addEventListener("click", () => {
       rublesChar.style.display = "none";
     } else {
       const price = parseFloat(priceText);
-      const totalPrice = price + (price * 0.02);
+      const totalPrice = input.value + (price * 0.02);
       calculatorBtns.classList.add("calculator-btns");
       priveValute.textContent = "Cтоимость в юанях";
       btn.textContent = "Сбросить";
       input.style.width = "50%";
       rublesChar.style.display = "block";
-      input.value = totalPrice.toFixed(2);
       
       const exchangeRate = 75;
       const priceInRubles = totalPrice * exchangeRate;
