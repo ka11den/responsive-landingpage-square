@@ -13,10 +13,11 @@ btn.addEventListener("click", () => {
   calculatorBtns.classList.remove(".calculator-btns")
 
   if (isReset) {
-    btn.textContent = "Рассчитать";
-    calculatorBtns.classList.remove("calculator-btns")
+    btn.textContent = "Рассчитать";    
     input.value = "0";
     
+    // css
+    calculatorBtns.classList.remove("calculator-btns")
     input.style.width = "50%";
     priveValute.textContent = "Cтоимость в юанях";
     rublesValue.style.display = "none";    
@@ -32,24 +33,28 @@ btn.addEventListener("click", () => {
     const priceText = selectedCategory.querySelector(".calculator__card-span").getAttribute("data-price");
     if (priceText === "связь с менеджером") {
       input.value = "Свяжитесь с менеджером";
+
+      // css
       input.style.width = "100%";
       calculatorBtns.classList.remove("calculator-btns")
       priveValute.textContent = "";
       rublesValue.style.display = "none";
       rublesChar.style.display = "none";
     } else {
-      const price = parseFloat(priceText);
-      const totalPrice = input.value + (price * 0.02);
+      const exchangeRate = 13;
+      const price = input.value * exchangeRate;
+      const totalPrice = price;
+      const priceWithTwoPercentIncrease = parseFloat(priceText) + totalPrice * 1.02;
+      
+      rublesValue.textContent = priceWithTwoPercentIncrease.toFixed();
+
+      // css
       calculatorBtns.classList.add("calculator-btns");
       priveValute.textContent = "Cтоимость в юанях";
       btn.textContent = "Сбросить";
       input.style.width = "50%";
-      rublesChar.style.display = "block";
-      
-      const exchangeRate = 75;
-      const priceInRubles = totalPrice * exchangeRate;
       rublesValue.style.display = "block";
-      rublesValue.textContent = priceInRubles.toFixed(2);
+      rublesChar.style.display = "block";
     }
     
     isReset = true;
