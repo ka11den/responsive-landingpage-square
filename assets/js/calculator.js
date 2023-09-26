@@ -7,10 +7,30 @@ const rublesValue = document.getElementById("rublesValue");
 
 let isReset = false;
 
+input.addEventListener("focus", () => {
+  input.value = ""
+})
+
 btn.addEventListener("click", () => {
+  
   const selectedCategory = document.querySelector("li.calculator__card-item.active");
   const calculatorBtns = document.getElementById("calculator-btns");
   calculatorBtns.classList.remove(".calculator-btns")
+
+  if (selectedCategory === null) {
+    priceInput.value = "Выберите категорию"
+
+    input.style.width = "100%";
+    priveValute.textContent = "";
+    rublesValue.style.display = "none";
+    rublesChar.style.display = "none";
+
+    setTimeout(() => {
+      input.style.width = "50%";
+      priceInput.value = "0"
+      priveValute.textContent = "Cтоимость в юанях";
+    }, 1000)    
+  }
 
   if (isReset) {   
 
@@ -41,13 +61,26 @@ btn.addEventListener("click", () => {
       priveValute.textContent = "";
       rublesValue.style.display = "none";
       rublesChar.style.display = "none";
+    }
+
+    if (priceInput.value == 0) {
+      priceInput.value = "Вы не заполнили данные"
+
+      input.style.width = "100%";
+      priveValute.textContent = "";
+      rublesValue.style.display = "none";
+      rublesChar.style.display = "none";
+  
+      setTimeout(() => {
+        input.style.width = "50%";
+        priceInput.value = "0"
+        priveValute.textContent = "Cтоимость в юанях";
+      }, 1000)
     } else {
       const exchangeRate = 13;
       const price = input.value * exchangeRate;
       const totalPrice = price;
-      const priceWithTwoPercentIncrease = parseFloat(priceText) + totalPrice * 1.02;
-
-      if (priceInput.value == 0) return input.value = "Вы не заполнили данные";
+      const priceWithTwoPercentIncrease = parseFloat(priceText) + totalPrice * 1.02;      
       
       rublesValue.textContent = priceWithTwoPercentIncrease.toFixed() | 0;
 
@@ -59,16 +92,18 @@ btn.addEventListener("click", () => {
       rublesValue.style.display = "block";
       rublesChar.style.display = "block";
     }
-    
+
     isReset = true;
   }
 });
+const cardItems = document.querySelectorAll(".calculator__card-item");
 
-const categoryItems = document.querySelectorAll("li.calculator__card-item");
-
-categoryItems.forEach(item => {
+cardItems.forEach(item => {
   item.addEventListener("click", () => {
-    categoryItems.forEach(i => i.classList.remove("active"));
-    item.classList.add("active");
+    // Уберите класс .active у всех элементов .calculator__card-checkbox
+    cardItems.forEach(i => i.querySelector('.calculator__card-checkbox').classList.remove("active"));
+    
+    // Добавьте класс .active только к текущему элементу .calculator__card-checkbox
+    item.querySelector('.calculator__card-checkbox').classList.add("active");
   });
 });
