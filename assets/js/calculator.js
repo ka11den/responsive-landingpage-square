@@ -96,14 +96,20 @@ btn.addEventListener("click", () => {
     isReset = true;
   }
 });
+
+const categoryItems = document.querySelectorAll("li.calculator__card-item");
 const cardItems = document.querySelectorAll(".calculator__card-item");
 
 cardItems.forEach(item => {
   item.addEventListener("click", () => {
-    // Уберите класс .active у всех элементов .calculator__card-checkbox
-    cardItems.forEach(i => i.querySelector('.calculator__card-checkbox').classList.remove("active"));
-    
-    // Добавьте класс .active только к текущему элементу .calculator__card-checkbox
+    cardItems.forEach(i => i.querySelector('.calculator__card-checkbox').classList.remove("active"));    
     item.querySelector('.calculator__card-checkbox').classList.add("active");
+  });
+});
+
+categoryItems.forEach(item => {
+  item.addEventListener("click", () => {
+    categoryItems.forEach(i => i.classList.remove("active"));
+    item.classList.add("active");
   });
 });
