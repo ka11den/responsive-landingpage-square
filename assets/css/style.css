@@ -101,6 +101,7 @@ button, input {
   cursor: pointer;
   border: none;
   background: none;
+  outline:none;
 }
 
 input::-webkit-outer-spin-button,
@@ -207,7 +208,7 @@ body {
 }
 
 .nav__logo {
-  pointer-events: none;
+  cursor: pointer;
 
   position: relative;
 
@@ -534,8 +535,14 @@ body {
 }
 
 .gallery__container {
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: repeat(2, auto);
   gap: 1.5rem;
+}
+
+.gallery__img-1,
+.gallery__img-2,
+.gallery__img-3 {
+  display: none;
 }
 
 .gallery__img {
@@ -558,9 +565,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 4rem;
-
-  padding: 2rem;
-  border-radius: 100px;
+  padding: 1rem;
+  border-radius: 50px;
   background: linear-gradient(180deg, #FFCF55 25.86%, rgba(255, 207, 85, 0.00) 100%);
 }
 
@@ -663,7 +669,8 @@ body {
   text-transform: uppercase;
 }
 /* preview */
-.preview {
+.preview,
+.preview__images {
   position: relative;
 }
 
@@ -687,8 +694,8 @@ body {
   color: var(--first-color);
   text-align: center;
   font-family: "Benzin-Regular";
-  font-size: var(--small-font-size);
-  line-height: 48px;
+  font-size: 12px;
+  line-height: 30px;
   text-transform: uppercase;
   opacity: 0.4;
 }
@@ -699,7 +706,7 @@ body {
 
 .preview__road-img {
   position: absolute;
-  bottom: 100px;
+  bottom: 274px;
 
   z-index: -1;
 }
@@ -730,7 +737,7 @@ body {
   justify-content: space-between;
   border-radius: 64px;
   background-size: 100% 100%;
-  height: 419px;
+  height: 200px;
 
   transition: all .3s;
 }
@@ -843,7 +850,6 @@ body {
 }
 
 .works__numbers {
-  display: flex;
   flex-direction: column;
   margin-top: 5rem;
   margin-bottom: 5rem;
@@ -853,21 +859,25 @@ body {
   flex-shrink: 0;
 
   z-index: 1;
+
+  display: none;
 }
 
 .works__card-img {
-  width: 1024px;
+  width: 800px;
   pointer-events: none;
 }
 
 .works__card-desc {
+  margin-top: -3rem;
+
   color: #FFF;
   font-family: "Benzin-Regular";
   text-align: center;
   font-size: var(--normal-font-size);
   font-style: normal;
   font-weight: 400;
-  line-height: 54px;
+  line-height: 30px;
 }
 
 .works__card-numbers {
@@ -1030,6 +1040,14 @@ body {
 .footer__links {
   display: grid;
   row-gap: .8rem;
+
+  transition: all .3s;
+}
+
+.footer__link:hover {
+  color:  #a5a5a5;
+
+  transition: all .3s;
 }
 
 .footer__title {
@@ -1068,8 +1086,12 @@ body {
 
 .calculator__data {
   display: flex;
+  gap: 1rem;
   flex-direction: column;
-  margin-top: 5rem;
+}
+
+.calculator__container {
+  gap: 3em;
 }
 
 .calculator__title {
@@ -1092,22 +1114,28 @@ body {
   text-transform: uppercase;
 }
 
+.calculator__card-input-active {
+  width: 90%;
+}
+
 .calculator__card {
   display: flex;
   flex-direction: column;
-  height: 700px;
   gap: 1.5rem;
 
-  padding: 3rem;
+  padding: 1rem;
 
-  border-radius: 96px 96px 0px 0px;
+  border-radius: 20px;
   background: linear-gradient(180deg, #FFCF55 25.86%, rgb(89 64 0) 100%);
-  /* background: linear-gradient(180deg, #FFCF55 25.86%, rgba(255, 207, 85, 0.00) 100%); */
 }
 
 .calculator__card-box {
   display: flex;
+  flex-direction: column;
   align-items: center;
+
+  margin-top: 1rem;
+  padding: 1rem;
 
   font-style: normal;
   font-weight: 400;
@@ -1115,13 +1143,13 @@ body {
   font-size: var(--small-font-size);
   color: var(--button-color);
   text-transform: uppercase;
-  border-radius: 96px;
+
+  border-radius: 20px;
   background: var(--button-color-alt);
 }
 
 .calculator__card-input {
-  padding: 3rem;
-  width: 50%;
+  width: 90%;
   font-family: Benzin-Bold;
   font-size: 32px;
   font-style: normal;
@@ -1242,7 +1270,6 @@ body {
 
 .calculator-btns {
   display: grid;
-  grid-template-columns: repeat(2, auto);
   padding: 1rem;
   align-items: center;
 
@@ -1273,7 +1300,7 @@ body {
 
 /* media */
 
-@media screen and (min-width: 300px) and (max-width: 500px) {
+@media screen and (min-width: 300px) and (max-width: 400px) {
   .home__title {
     font-size: 45px;
   }
@@ -1292,10 +1319,32 @@ body {
     width: 270px;
     max-width: fit-content;
     z-index: -1;
+  }  
+}
+
+@media screen and (min-width: 400px) and (max-width: 500px) {
+  .home__title {
+    font-size: 50px;
+  }
+  .home__title-effect__img-1 {
+    position: absolute;
+    top: -93px;
+    left: -45px;
+    z-index: -1;
+    width: 250px;
+    max-width: fit-content;
+  }
+  .home__title-effect__img-2 {
+    position: absolute;
+    top: -97px;
+    left: -51px;
+    width: 290px;
+    max-width: fit-content;
+    z-index: -1;
   }
 }
 
-@media screen and (min-width: 400px) and (max-width: 600px) {
+@media screen and (min-width: 500px) and (max-width: 600px) {
   .home__title {
     font-size: 68px;
   }
@@ -1337,6 +1386,26 @@ body {
     max-width: fit-content;
     z-index: -1;
   }
+  /* about */
+  .about__data {
+    padding: 4rem;
+    border-radius: 192px 192px 0px 0px;
+  }
+  .about__card {
+    padding: 3rem;
+    border-radius: 96px;
+  }
+  /* gallery */
+  .gallery__container {
+    grid-template-columns: repeat(3, auto);
+  }
+  .gallery__img-1 {
+    display: block;
+  }
+  /* works */
+  .works__card-desc {
+    line-height: 54px;
+  }
 }
 
 @media screen and (min-width: 1000px) {
@@ -1374,28 +1443,52 @@ body {
   }
 
   .about__data {
-    padding: 7rem;
-    
+    padding: 7rem;    
     border-radius: 192px 192px 0px 0px;
   }
-
+  /* gallery */
+  .gallery__container {
+    grid-template-columns: repeat(5, auto);
+  }
+  .gallery__img-1,
+  .gallery__img-2,
+  .gallery__img-3 {
+    display: block;
+  }
   /* category */
   .category__card-1,
   .category__card-2,
   .category__card-3 {
     flex-direction: row;
   }
+  .category__card-1,
+  .category__card-2,
+  .category__card-3 {
+    height: 419px;
+  }
 
   /* preview */
   .preview__effect {
     position: absolute;
-    top: -400px;
+    top: -600px;
     right: 0;
   
     z-index: -1;
   }
   .preview__desc {
     width: 970px;
+    font-size: var(--small-font-size);
+    line-height: 48px;
+  }
+  .preview__road-img {
+    bottom: 170px;
+  }
+  /* works */
+  .works__numbers {
+    display: flex;
+  }
+  .works__card-desc {
+    line-height: 54px;
   }
   /* faq */
   .faq__card-header {  
@@ -1433,7 +1526,7 @@ body {
   }
   /* works */
   .works__card-numbers {
-    font-size: 500px;
+    font-size: 400px;
   }
   .works__card {
     margin-top: -10rem;
@@ -1464,6 +1557,42 @@ body {
   .calculator__container {
     gap: 10rem;
     grid-template-columns: repeat(2, auto);
+  }
+  .calculator__data {
+    margin-top: 5rem;
+  }
+  .calculator__card {
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+    gap: 1.5rem;
+  
+    padding: 3rem;
+  
+    border-radius: 96px 96px 0px 0px;
+    background: linear-gradient(180deg, #FFCF55 25.86%, rgb(89 64 0) 100%);
+  }
+  .calculator__card-box {
+    flex-direction: row;
+    padding: 3rem;
+    border-radius: 96px;
+  }
+  .calculator-btns {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    padding: 1rem;
+    align-items: center;
+  
+    border-radius: 68px;
+    background: #0A0A0A;   
+  
+    transition: all .3s;
+  }
+  .calculator__card-input-active,
+  .calculator__card-input {
+    width: 100%;
+
+    transition: all .3s;
   }
 }
 

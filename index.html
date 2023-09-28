@@ -16,7 +16,7 @@
   <header class="header container">
     <nav class="nav container">
 
-      <a class="nav__logo">
+      <a href="./index.html" class="nav__logo">
         <svg xmlns="http://www.w3.org/2000/svg" width="220" height="93" viewBox="0 0 220 104" fill="none">
           <g filter="url(#filter0_d_40_35)">
             <path d="M115.446 46.9664C115.446 41.3001 119.836 36.6028 125.49 36.2211L173.068 33.0083C181.147 32.4628 188 38.869 188 46.9664C188 55.0638 181.147 61.4701 173.068 60.9246L125.49 57.7118C119.836 57.33 115.446 52.6328 115.446 46.9664Z" fill="#FFCF55"/>
@@ -58,10 +58,10 @@
             <a class="nav__link" href="#home">Главная</a>
           </li>
           <li class="nav__item">
-            <a class="nav__link" href="#about">Как заказать?</a>
+            <a class="nav__link" href="#works">Как заказать?</a>
           </li>
           <li class="nav__item">
-            <a class="nav__link" href="./calculator.html">Калькулятор</a>
+            <a class="nav__link" href="./calc.html">Калькулятор</a>
           </li>
           <li class="nav__item">
             <a class="nav__link" href="#faq">FAQ</a>
@@ -116,7 +116,7 @@
         
         <div class="home__buttns">
           <a class="home__btn" href="#">написать нам</a>
-          <a class="home__btn" href="#">рассчитать цену</a>
+          <a class="home__btn" href="./calc.html">рассчитать цену</a>
         </div>
 
         <img class="home__img" src="./assets/img/home.webp" loading="lazy" alt="loading" />
@@ -284,17 +284,17 @@
   <section class="works section" id="works">
     <img class="works__effect" src="./assets/img/works__effect.webp" alt="loading" loading="lazy" />
     <div class="works__container container grid">
-      <h1 class="works__title">
-        как мы работаем
-      </h1>      
-      <div class="works__data">
-        <div class="works__data-hr"></div>
-          <h1 class="works__numbers" id="works__numbers-category">          
-        </h1>        
-        <div class="works__data" id="work-container">
-          <!-- content -->
+        <h1 class="works__title">
+            как мы работаем
+        </h1>
+        <div class="works__data">
+            <div class="works__data-hr"></div>
+            <h1 class="works__numbers" id="works__numbers-category">
+            </h1>
+            <div class="works__slider" id="work-container">
+                <!-- Сюда будут добавляться слайды динамически -->
+            </div>
         </div>
-      </div>
     </div>
   </section>
   
@@ -370,7 +370,7 @@
             <a href="#home" class="footer__link">главная</a>
           </li>
           <li>
-            <a href="#about" class="footer__link">как заказать?</a>
+            <a href="#works" class="footer__link">как заказать?</a>
           </li>
           <li>
             <a href="#faq" class="footer__link">ответы на вопросы</a>
@@ -393,13 +393,13 @@
 
         <ul class="footer__links">
           <li>
-            <a href="./calculator.html" class="footer__link">калькулятор</a>
+            <a href="./calc.html" class="footer__link">калькулятор</a>
           </li>
           <li>
-            <a href="#teams" class="footer__link">узнать свой размер</a>
+            <a href="#faq" class="footer__link">узнать свой размер</a>
           </li>
           <li>
-            <a href="#advantages" class="footer__link">информация о доставке</a>
+            <a href="#faq" class="footer__link">информация о доставке</a>
           </li>
         </ul>
       </div>
@@ -414,12 +414,12 @@
             </a>
           </li>
           <li>
-            <a href="tel:+89171951499" class="footer__link">
+            <p class="footer__link">
               пн-пт 09:00 - 18:00
-            </a>
+            </p>
           </li>
           <li>
-            <a href="tel:+89171951499" class="footer__link">
+            <a href="mailto:mail@help@squarestore.ru" class="footer__link">
               help@squarestore.ru
             </a>
           </li>

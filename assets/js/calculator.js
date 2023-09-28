@@ -20,13 +20,13 @@ btn.addEventListener("click", () => {
   if (selectedCategory === null) {
     priceInput.value = "Выберите категорию"
 
-    input.style.width = "100%";
+    input.classList.add(".calculator__card-input-active");
     priveValute.textContent = "";
     rublesValue.style.display = "none";
     rublesChar.style.display = "none";
 
     setTimeout(() => {
-      input.style.width = "50%";
+      input.classList.add(".calculator__card-input-active");
       priceInput.value = "0"
       priveValute.textContent = "Cтоимость в юанях";
     }, 1000)    
@@ -39,7 +39,7 @@ btn.addEventListener("click", () => {
     
     // css
     calculatorBtns.classList.remove("calculator-btns")
-    input.style.width = "50%";
+    input.classList.add(".calculator__card-input-active");
     priveValute.textContent = "Cтоимость в юанях";
     rublesValue.style.display = "none";    
     rublesChar.style.display = "none";
@@ -72,7 +72,7 @@ btn.addEventListener("click", () => {
       rublesChar.style.display = "none";
   
       setTimeout(() => {
-        input.style.width = "50%";
+        input.classList.add(".calculator__card-input-active");
         priceInput.value = "0"
         priveValute.textContent = "Cтоимость в юанях";
       }, 1000)
@@ -88,7 +88,7 @@ btn.addEventListener("click", () => {
       calculatorBtns.classList.add("calculator-btns");
       priveValute.textContent = "Cтоимость в юанях";
       btn.textContent = "Сбросить";
-      input.style.width = "50%";
+      input.classList.add(".calculator__card-input-active");
       rublesValue.style.display = "block";
       rublesChar.style.display = "block";
     }
