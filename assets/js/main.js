@@ -177,6 +177,68 @@ function setCategories () {
   });
 };
 
+const worksSlider = document.querySelector(".works__slider");
+let isDragging = false;
+let startX;
+let translateX = 0;
+let currentTranslateX = 0;
+
+worksSlider.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  startX = e.clientX;
+  worksSlider.style.cursor = "grabbing";
+});
+
+worksSlider.addEventListener("touchstart", (e) => {
+  isDragging = true;
+  startX = e.touches[0].clientX;
+  worksSlider.style.cursor = "grabbing";
+});
+
+worksSlider.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+
+  const offsetX = e.clientX - startX;
+  translateX = currentTranslateX + offsetX;
+
+  worksContainer.style.transform = `translateX(${translateX}px)`;
+});
+
+worksSlider.addEventListener("touchmove", (e) => {
+  if (!isDragging) return;
+
+  const offsetX = e.touches[0].clientX - startX;
+  translateX = currentTranslateX + offsetX;
+
+  worksContainer.style.transform = `translateX(${translateX}px)`;
+});
+
+worksSlider.addEventListener("mouseup", () => {
+  if (!isDragging) return;
+
+  currentTranslateX = translateX;
+  isDragging = false;
+  worksSlider.style.cursor = "grab";
+
+  // Сброс смещения при свайпе
+  translateX = 0;
+  currentTranslateX = 0;
+  worksContainer.style.transform = "translateX(0)";
+});
+
+worksSlider.addEventListener("touchend", () => {
+  if (!isDragging) return;
+
+  currentTranslateX = translateX;
+  isDragging = false;
+  worksSlider.style.cursor = "grab";
+
+  // Сброс смещения при свайпе
+  translateX = 0;
+  currentTranslateX = 0;
+  worksContainer.style.transform = "translateX(0)";
+});
+
 setCategories();
 
 // faq

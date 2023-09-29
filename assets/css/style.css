@@ -791,6 +791,7 @@ body {
   background: var(--button-color-alt);;
 }
 
+
 /* works */
 .works {
   position: relative;
@@ -882,8 +883,19 @@ body {
   pointer-events: none;
 }
 
-.works__card {
-  transition: transform 0.3s ease-in-out;
+.works__slider.dragging {
+  cursor: grab;
+  scroll-behavior: auto;
+}
+
+.works__slider.dragging article {
+  pointer-events: none;
+}
+
+.works__slider {
+  overflow: hidden;
+  display: flex;
+  transition: transform 0.009s ease-in-out;
 }
 
 .works__card-desc {
