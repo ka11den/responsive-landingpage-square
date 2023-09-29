@@ -90,21 +90,61 @@ const data = [
 ]
 
 const worksContainer = document.getElementById("work-container");
+let currentIndex = 0;
+let touchStartX;
+let touchEndX;
 
-function displayWorksCard (works) {
-  worksContainer.innerHTML = works
-  .map((work) => (
-    `
-    <article class="works__card">
-      <h1 class="works__card-numbers">${work.number}</h1>
-      <img class="works__card-img" src="${work.img}" />
-      <p class="works__card-desc">
-        ${work.desc}
-      </p>
-    </article>
-    `
-  ))
-  .join("");
+function displaySlide(index) {
+  worksContainer.innerHTML = "";
+
+  const slide = data[index];
+  const slideElement = document.createElement("article");
+  slideElement.classList.add("works__card");
+  slideElement.innerHTML = `
+    <h1 class="works__card-numbers">${slide.number}</h1>
+    <img class="works__card-img" src="${slide.img}" />
+    <p class="works__card-desc">${slide.desc}</p>
+  `;
+
+  worksContainer.appendChild(slideElement);
+}
+
+displaySlide(currentIndex);
+
+worksContainer.addEventListener("mousedown", (e) => {
+  touchStartX = e.clientX;  
+});
+
+worksContainer.addEventListener("touchstart", (e) => {
+  touchStartX = e.touches[0].clientX;
+});
+
+worksContainer.addEventListener("mouseup", (e) => {
+  touchEndX = e.clientX;
+  handleSwipe();
+});
+
+worksContainer.addEventListener("touchend", (e) => {
+  touchEndX = e.changedTouches[0].clientX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  const deltaX = touchEndX - touchStartX;
+
+  if (deltaX > 50) {
+    currentIndex--;
+    if (currentIndex < 0) {
+      currentIndex = data.length - 1;
+    }
+  } else if (deltaX < -50) {
+    currentIndex++;
+    if (currentIndex >= data.length) {
+      currentIndex = 0;
+    }
+  }
+
+  displaySlide(currentIndex);
 }
 
 const categoriesContainer = document.getElementById("works__numbers-category");
@@ -133,11 +173,10 @@ function setCategories () {
 
     if (selectedCat === "u") selectedCat = "1"
 
-    displayWorksCard(data.filter((item) => item.id === selectedCat));
+    displaySlide(selectedCat);
   });
 };
 
-displayWorksCard(data.filter((item) => item.id === "1"))
 setCategories();
 
 // faq

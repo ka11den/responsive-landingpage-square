@@ -791,11 +791,25 @@ body {
   background: var(--button-color-alt);;
 }
 
-
 /* works */
 .works {
   position: relative;
 }
+
+.works__slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Анимация переключения */
+}
+
+.works__card {
+  flex: 0 0 100%;
+  opacity: 1;
+}
+
 
 .works__data {
   position: relative;
@@ -866,6 +880,10 @@ body {
 .works__card-img {
   width: 800px;
   pointer-events: none;
+}
+
+.works__card {
+  transition: transform 0.3s ease-in-out;
 }
 
 .works__card-desc {
@@ -1211,23 +1229,29 @@ body {
 .calculator__card-checkbox::before {
   position: relative;
 
-  content: "\25A0";
-  color: #000;
+  display: flex;
+  content: "";
+  width: 20px;
+  height: 20px; 
+
+  background-color: #000;
+  border-radius: 50%;
   margin-right: 10px;
-  font-size: 25px;
-  line-height: 1;
 
   transition: all .3s;
 }
 
-.calculator__card-checkbox.active::after {
-  position: absolute;
-  top: 6.5px;
-  left: 4.5px;
+.calculator__card-checkbox.active::after {  
+  position: absolute;  
+  top: 6px;
+  left: 6px;
 
-  content: "\25A0";
-  color: #ffcc00;
-  font-size: 10px;  
+  content: "";
+  width: 8px;
+  height: 8px;
+
+  background-color: #ffcc00;
+  border-radius: 50%;
 
   transition: all .3s;
 }
