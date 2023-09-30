@@ -90,14 +90,14 @@ const data = [
 ]
 
 const worksContainer = document.getElementById("work-container");
-let currentIndex = 0;
+let currentIndex = 1;
 let touchStartX;
 let touchEndX;
 
 function displaySlide(index) {
   worksContainer.innerHTML = "";
 
-  const slide = data[index];
+  const slide = data[index - 1];
   const slideElement = document.createElement("article");
   slideElement.classList.add("works__card");
   slideElement.innerHTML = `
@@ -134,13 +134,13 @@ function handleSwipe() {
 
   if (deltaX > 50) {
     currentIndex--;
-    if (currentIndex < 0) {
-      currentIndex = data.length - 1;
+    if (currentIndex < 1) {
+      currentIndex = data.length;
     }
   } else if (deltaX < -50) {
     currentIndex++;
-    if (currentIndex >= data.length) {
-      currentIndex = 0;
+    if (currentIndex > data.length) {
+      currentIndex = 1;
     }
   }
 
@@ -199,8 +199,8 @@ worksSlider.addEventListener("mousemove", (e) => {
   if (!isDragging) return;
 
   const offsetX = e.clientX - startX;
-  translateX = currentTranslateX + offsetX;
-
+  translateX = (currentTranslateX + offsetX) / 2;
+ 
   worksContainer.style.transform = `translateX(${translateX}px)`;
 });
 
@@ -208,7 +208,7 @@ worksSlider.addEventListener("touchmove", (e) => {
   if (!isDragging) return;
 
   const offsetX = e.touches[0].clientX - startX;
-  translateX = currentTranslateX + offsetX;
+  translateX = (currentTranslateX + offsetX) / 2;
 
   worksContainer.style.transform = `translateX(${translateX}px)`;
 });
