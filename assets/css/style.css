@@ -182,6 +182,7 @@ body {
 
   z-index: -1;
 }
+
 .header__effect-1 {
   position: absolute;
   top: 0px;
@@ -243,12 +244,20 @@ body {
   transform: translateY(-5px);
 }
 
+.nav__buttns-mob {
+  display: flex;
+  margin: 0 auto;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
 /* media */
 @media screen and (max-width: 1400px) {
   .nav__menu, .nav__buttns {
     position: fixed;
-    left: -25px;
-    top: -500%;
+    left: -24px;
+    right: 0;
+    top: -700%;
     width: 100vw;
 
     padding-block: 4rem;
@@ -574,8 +583,10 @@ body {
   text-align: center;
   flex-direction: column;
   justify-content: space-around;
-  row-gap: 3rem;
-  margin-bottom: 10rem;
+
+  row-gap: 5rem;
+  margin-top: 5rem;
+  margin-bottom: 6rem;
 }
 
 .about__stats-title {
@@ -625,10 +636,12 @@ body {
 .about__desc {
   font-family: "Benzin-Regular";
   font-size: var(--small-font-size);
-  line-height: 48px;
+  line-height: 28px;
   text-transform: uppercase;
 
   margin-top: 1rem;
+
+  text-align: center;
 }
 
 .about__card-icon path {
@@ -667,6 +680,8 @@ body {
   font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
+
+  text-align: center;
 }
 /* preview */
 .preview,
@@ -1458,13 +1473,22 @@ body {
     max-width: fit-content;
     z-index: -1;
   }
+  
   /* about */
   .about__stats {
     flex-direction: row;
+    margin-top: 0rem;
+    row-gap: 3rem;
+    margin-bottom: 10rem;
   }
 
   .about__stat-card {
     gap: 1rem;
+  }
+
+  .about__desc {
+    text-align: left;
+    line-height: 48px;
   }
 
   .about__card {
@@ -1692,6 +1716,10 @@ body {
   /* base */
   .container {
     max-width: 1300px;
+  }
+
+  .nav__buttns-mob {
+    display: none;
   }
 
   /* header */
