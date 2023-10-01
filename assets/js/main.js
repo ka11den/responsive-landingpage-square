@@ -41,6 +41,7 @@ function scrollActive() {
     }
   })
 }
+
 window.addEventListener('scroll', scrollActive)
 
 // works
@@ -90,9 +91,17 @@ const data = [
 ]
 
 const worksContainer = document.getElementById("work-container");
+const worksSlider = document.querySelector(".works__slider");
+const categoriesContainer = document.getElementById("works__numbers-category");
+
 let currentIndex = 1;
 let touchStartX;
 let touchEndX;
+let isDragging = false;
+let startX;
+let translateX = 0;
+let currentTranslateX = 0;
+let selectedCat = 1;
 
 function displaySlide(index) {
   worksContainer.innerHTML = "";
@@ -109,7 +118,69 @@ function displaySlide(index) {
   worksContainer.appendChild(slideElement);
 }
 
-displaySlide(currentIndex);
+function handleSwipe() {
+  const deltaX = touchEndX - touchStartX;
+
+  if (deltaX > 50) {
+    selectedCat--;
+    if (selectedCat < 1) {
+      selectedCat = data.length;
+    }
+  } else if (deltaX < -50) {
+    selectedCat++;
+    if (selectedCat > data.length) {
+      selectedCat = 1;
+    }
+  }
+
+  displaySlide(selectedCat);
+}
+
+function createCategoryButtons() {
+  const uniqueCategories = [...new Set(data.map(item => item.id))];
+
+  categoriesContainer.innerHTML = uniqueCategories.map((cat) => {
+    return `
+      <button class="works__number-btn" data-cat="${cat}">
+        ${cat}
+      </button>
+    `;
+  }).join("");
+}
+
+function setCategories() {
+  createCategoryButtons();
+
+  categoriesContainer.addEventListener("click", (e) => {
+    selectedCat = e.target.dataset.cat;
+
+    if (selectedCat) {
+      displaySlide(+selectedCat);
+    }
+  });
+}
+
+function handleSwipeMove(e) {
+  if (!isDragging) return;
+
+  const offsetX = e.clientX - startX;
+  translateX = (currentTranslateX + offsetX) / 2;
+ 
+  worksContainer.style.transform = `translateX(${translateX}px)`;
+}
+
+function resetSliderPosition() {
+  if (!isDragging) return;
+
+  currentTranslateX = translateX;
+  isDragging = false;
+  worksSlider.style.cursor = "grab";
+
+  // Сброс смещения при свайпе
+  translateX = 0;
+  currentTranslateX = 0;
+  worksContainer.style.transform = "translateX(0)";
+}
 
 worksContainer.addEventListener("mousedown", (e) => {
   touchStartX = e.clientX;  
@@ -129,60 +200,6 @@ worksContainer.addEventListener("touchend", (e) => {
   handleSwipe();
 });
 
-function handleSwipe() {
-  const deltaX = touchEndX - touchStartX;
-
-  if (deltaX > 50) {
-    currentIndex--;
-    if (currentIndex < 1) {
-      currentIndex = data.length;
-    }
-  } else if (deltaX < -50) {
-    currentIndex++;
-    if (currentIndex > data.length) {
-      currentIndex = 1;
-    }
-  }
-
-  displaySlide(currentIndex);
-}
-
-const categoriesContainer = document.getElementById("works__numbers-category");
-
-function setCategories () {
-  const allCats = data.map((item) => item.id);
-  const categories = [
-    ...allCats.filter((item, i) => {
-      return allCats.indexOf(item) === i;
-    }),
-  ];
-
-  categoriesContainer.innerHTML = categories
-    .map(
-      (cat) =>
-        `
-        <button class="works__number-btn">
-          ${cat}
-        </button>
-        `
-    )
-    .join("");
-
-  categoriesContainer.addEventListener("click", (e) => {
-    let selectedCat = e.target.innerHTML.split("")[11];
-
-    if (selectedCat === "u") selectedCat = "1"
-
-    displaySlide(selectedCat);
-  });
-};
-
-const worksSlider = document.querySelector(".works__slider");
-let isDragging = false;
-let startX;
-let translateX = 0;
-let currentTranslateX = 0;
-
 worksSlider.addEventListener("mousedown", (e) => {
   isDragging = true;
   startX = e.clientX;
@@ -195,51 +212,13 @@ worksSlider.addEventListener("touchstart", (e) => {
   worksSlider.style.cursor = "grabbing";
 });
 
-worksSlider.addEventListener("mousemove", (e) => {
-  if (!isDragging) return;
+worksSlider.addEventListener("mousemove", (e) => handleSwipeMove(e));
+worksSlider.addEventListener("touchmove", (e) => handleSwipeMove(e));
+worksSlider.addEventListener("mouseup", () => resetSliderPosition());
+worksSlider.addEventListener("touchend", () => resetSliderPosition());
 
-  const offsetX = e.clientX - startX;
-  translateX = (currentTranslateX + offsetX) / 2;
- 
-  worksContainer.style.transform = `translateX(${translateX}px)`;
-});
-
-worksSlider.addEventListener("touchmove", (e) => {
-  if (!isDragging) return;
-
-  const offsetX = e.touches[0].clientX - startX;
-  translateX = (currentTranslateX + offsetX) / 2;
-
-  worksContainer.style.transform = `translateX(${translateX}px)`;
-});
-
-worksSlider.addEventListener("mouseup", () => {
-  if (!isDragging) return;
-
-  currentTranslateX = translateX;
-  isDragging = false;
-  worksSlider.style.cursor = "grab";
-
-  // Сброс смещения при свайпе
-  translateX = 0;
-  currentTranslateX = 0;
-  worksContainer.style.transform = "translateX(0)";
-});
-
-worksSlider.addEventListener("touchend", () => {
-  if (!isDragging) return;
-
-  currentTranslateX = translateX;
-  isDragging = false;
-  worksSlider.style.cursor = "grab";
-
-  // Сброс смещения при свайпе
-  translateX = 0;
-  currentTranslateX = 0;
-  worksContainer.style.transform = "translateX(0)";
-});
-
-setCategories();
+setCategories(currentIndex);
+displaySlide(currentIndex);
 
 // faq
 const faq = [
