@@ -89,6 +89,7 @@ a {
 }
 
 img {
+  pointer-events: none;
   max-width: 100%;
   height: auto;
 }
@@ -476,8 +477,6 @@ body {
 }
 
 .home__img {
-  pointer-events: none;
-  
   margin-top: -8rem;
   animation: home-img 5s infinite ease-in-out;
 }
@@ -701,10 +700,6 @@ body {
   opacity: 0.4;
 }
 
-.preview__img {
-  pointer-events: none;
-}
-
 .preview__road-img {
   position: absolute;
   bottom: 274px;
@@ -881,7 +876,6 @@ body {
 
 .works__card-img {
   width: 800px;
-  pointer-events: none;
 }
 
 .works__slider.dragging {
@@ -1038,10 +1032,6 @@ body {
   padding: 2rem 0 4rem;
   border-top: 1px solid #816A2F;
   background: rgba(10, 10, 10, 0.75);
-}
-
-.footer__logo {
-  pointer-events: none;
 }
 
 .footer__effect {
@@ -1581,10 +1571,7 @@ body {
   }
   /* works */  
   .works__card-desc {
-    margin-top: -10rem;
-  }
-  .works__card-desc {
-    margin-top: -13rem;
+    margin-top: -9rem;
   }
   /* footer */
   .footer__social {
