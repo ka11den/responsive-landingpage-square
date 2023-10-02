@@ -764,22 +764,45 @@ body {
 }
 
 .category__card-1 {
-  background-image: url(../img/category__one.webp);
+  background-position: center;
+  background-size: cover;
+  background-image: url(../img/category__one.jpg);
+
+  transition: all .3s;
 }
 
 .category__card-2 {
+  background-position: center;
   background-image: url(../img/category__two.webp);
+
+  transition: all .3s;
 }
 
 .category__card-3 {
-  background-image: url(../img/category__three.webp);
+  background-position: center;
+  background-size: cover;
+  background-image: url(../img/category__three.jpg);
+
+  transition: all .3s;
 }
 
-.category__card-3:hover,
-.category__card-2:hover,
 .category__card-1:hover {
-  background-size: 104% 104%;
+  background-position-x: 20px;
+
+  transition: all .3s;
 }
+
+.category__card-2:hover {
+  background-size: 105% 105%;
+  transition: all .3s;
+}
+
+.category__card-3:hover {
+  background-size: 120% 290%;
+  
+  transition: all .3s;
+}
+
 
 .category__btns {
   display: flex;
