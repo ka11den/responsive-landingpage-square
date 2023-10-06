@@ -1099,6 +1099,8 @@ body {
   padding: 2rem 0 4rem;
   border-top: 1px solid #816A2F;
   background: rgba(10, 10, 10, 0.75);
+
+  display: none;
 }
 
 .footer__effect {
@@ -1645,6 +1647,10 @@ body {
     display: block;
     top: 200px;
     background: #FB5;
+  }
+  /* footer */
+  .footer {
+    display: block;
   }
   /* gallery */
   .gallery {

@@ -27,11 +27,11 @@ if (navClose) {
 const sections = document.querySelectorAll('section[id]')
 
 function scrollActive() {
-  const scrollY = window.scrollY
+  const scrollY = window.scrollY;
 
   sections.forEach(current => {
-    const sectionHeight = current.offsetHeight
-    const sectionTop = current.offsetTop - 40;
+    const sectionHeight = current.offsetHeight;
+    const sectionTop = current.offsetTop;
     sectionId = current.getAttribute('id')
 
     if (scrollY >= sectionTop && scrollY <= sectionTop + sectionHeight) {
@@ -49,43 +49,43 @@ const data = [
   {
     id: "1",
     number: "01",
-    img: "./assets/img/home.webp",
+    img: "./assets/img/faq__image-1.png",
     desc: "Вы обращаетесь к нам, присылаете позицию, которая вам интересна, а Мы помогаем подобрать Вам размер и заканчиваем оформления заказа сразу после оплаты."
   },
   {
     id: "2",
     number: "02",
-    img: "./assets/img/work1.webp",
+    img: "./assets/img/faq__image-2.png.png",
     desc: "После того как оформление заказа завершено и оплата получена, Мы выкупаем вашу позицию с ранее обговоренными требованиями с сайта Poizon"
   },
   {
     id: "3",
     number: "03",
-    img: "./assets/img/work2.webp",
+    img: "./assets/img/faq__image-3.png.png",
     desc: "Poizon отправляет товар на наш склад в Китае в скором времени"
   },
   {
     id: "4",
     number: "04",
-    img: "./assets/img/home.webp",
+    img: "./assets/img/faq__image-4.png.png",
     desc: "Мы проверяем каждую позицию на оригинал, наличие дефектом и других недочетов. В случае возникновения каких-либо форс-мажоров мы меняем позицию на новую"
   },
   {
     id: "5",
     number: "05",
-    img: "./assets/img/work1.webp",
+    img: "./assets/img/faq__image-5.png.png",
     desc: "После полной проверки каждой из позиций Мы отправляем на наш склад в Россию большой партией. При получении партии в России мы вновь проверяем товар и готовим к выдаче или отправке клиентам"
   },
   {
     id: "6",
     number: "06",
-    img: "./assets/img/work2.webp",
+    img: "./assets/img/faq__image-6.png.png",
     desc: "Заключительная часть, Мы сортируем заказы и выдаем или отправляем клиентам их товар"
   },
   {
     id: "7",
     number: "07",
-    img: "./assets/img/home.webp",
+    img: "./assets/img/faq__image-7.png.png",
     desc: "Не так уж и трудно. Ваш заказ у вас в идеально состоянии и все довольны!"
   }
 ]

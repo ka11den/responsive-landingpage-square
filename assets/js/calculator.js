@@ -77,10 +77,16 @@ btn.addEventListener("click", () => {
         priveValute.textContent = "Cтоимость в юанях";
       }, 1000)
     } else {
-      const exchangeRate = 13;
-      const price = input.value * exchangeRate;
-      const totalPrice = price;
-      const priceWithTwoPercentIncrease = parseFloat(priceText) + totalPrice * 1.02;      
+      // курс юаня
+      const exchangeCourse = 14.7;
+
+      // комиссия
+      const commission = 1000;
+
+      // значение которое мы вводим умножаем на курс
+      const price = input.value * exchangeCourse;
+      const totalPrice = price + commission;
+      const priceWithTwoPercentIncrease = (totalPrice * 1.02) + parseFloat(priceText);
       
       rublesValue.textContent = priceWithTwoPercentIncrease.toFixed() | 0;
 
