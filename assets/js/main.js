@@ -230,7 +230,7 @@ const faq = [
   {
     id: 2,
     title: "Где я могу посмотреть каталог товаров?",
-    desc: "Смотреть и выбирать вы можете в приложении Poizon. Скачать его на iPhone вы можете тут https://apps.apple.com/ru/app/得物-有毒的运动-潮流-好物/id1012871328 на Android - тут https://m.anxinapk.com/rj/12201303.html. Скачав и авторизовавшись в приложении вам откроется каталог в миллионы позиций, вы выбираете, а мы поможем доставить. При возникновении трудностей с установкой приложения или чего - либо вы так же можете обратиться к нам и мы вам подскажем"
+    desc: `Смотреть и выбирать вы можете в приложении Poizon. Скачать его на iPhone вы можете <a href=" https://apps.apple.com/ru/app/得物-有毒的运动-潮流-好物/id1012871328">тут</a> на Android - <a href="https://m.anxinapk.com/rj/12201303.html">тут</a>. Скачав и авторизовавшись в приложении вам откроется каталог в миллионы позиций, вы выбираете, а мы поможем доставить. При возникновении трудностей с установкой приложения или чего - либо вы так же можете обратиться к нам и мы вам подскажем`
   },
   {
     id: 3,
@@ -253,46 +253,44 @@ const faqContainer = document.getElementById("faq-container");
 
 function displayFaq(faqs) {
   faqContainer.innerHTML = faqs.map((item) => (
-      `
-      <article class="faq__card" data-id="${item.id}">
-        <div class="faq__card-header">
-          <h1 class="faq__card-title">
+    `
+    <article class="faq__card" data-id="${item.id}">
+      <div class="faq__card-header">
+        <h1 class="faq__card-title">
           ${item.title}
-          </h1>
-          <img src="./assets/img/open.svg" class="faq__toggle-button" /> 
-        </div>
-        <div class="faq__card-dropdown">
-          <p class="faq__card-dropdown__desc">${item.desc}</p>
-        </div>
-      </article>
-      `
-    ))
-    .join("");
+        </h1>
+        <img src="./assets/img/open.svg" class="faq__toggle-button" /> 
+      </div>
+      <div class="faq__card-dropdown">
+        <p class="faq__card-dropdown__desc">${item.desc}</p>
+      </div>
+    </article>
+    `
+  ))
+  .join("");
 
-  const cards = document.querySelectorAll(".faq__card");
-  cards.forEach((card) => {
-    card.addEventListener("click", toggleDropdown);
+  const headers = document.querySelectorAll(".faq__card-header");
+  headers.forEach((header) => {
+    header.addEventListener("click", toggleDropdown);
   });
 }
 
-function toggleDropdown(event) { 
-  const button = event.target;
-  const card = button.closest(".faq__card");
-  const header = card.querySelector(".faq__card-header");
-  const headerTitle = card.querySelector(".faq__card-title")
+function toggleDropdown(event) {
+  const header = event.currentTarget;
+  const card = header.parentElement;
   const dropdown = card.querySelector(".faq__card-dropdown");
   const btn = card.querySelector(".faq__toggle-button");
 
-  if (dropdown.style.maxHeight <= "0px") {
+  if (dropdown.style.maxHeight <= "0px" || dropdown.style.maxHeight === "") {
     dropdown.style.maxHeight = "1000px";
-    header.style.background = "#161616"
-    headerTitle.style.color = "#fff"
+    header.style.background = "#161616";
+    header.querySelector(".faq__card-title").style.color = "#fff";
     btn.style.transform = "rotate(30deg)";
     card.classList.add("active");
   } else {
-    dropdown.style.maxHeight = "0";
-    header.style.background = "#0E0E0E"
-    headerTitle.style.color = "#5E5E5E"
+    dropdown.style.maxHeight = "0px";
+    header.style.background = "#0E0E0E";
+    header.querySelector(".faq__card-title").style.color = "#5E5E5E";
     btn.style.transform = "rotate(0)";
     card.classList.remove("active");
   }

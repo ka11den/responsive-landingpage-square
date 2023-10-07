@@ -1052,16 +1052,20 @@ body {
 
   border-radius: 30px;
   background-color: #0E0E0E;
+
+  z-index: 2;
 }
 
 .faq__card-dropdown { 
+  cursor: default;
+
   margin-top: -3rem;
 
   color: #5E5E5E;
   background-color: hsla(0, 0%, 5%, 1);
 
   transition: all .3s;
-  z-index: -1; 
+  z-index: 1; 
 
   border-radius: 0 0 30px 30px;
 
